@@ -1,0 +1,17 @@
+server:  
+  port: ${PORT:8761}
+ 
+spring:
+  application:
+    name: discovery-service
+  boot:
+    admin: 
+      context-path: /admin   
+eureka:  
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+  server:
+    enableSelfPreservation: true

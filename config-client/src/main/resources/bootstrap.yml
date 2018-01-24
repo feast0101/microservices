@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: bar
+  cloud:
+    config:
+      uri: http://localhost:${config.port:8888}
+      username: user
+      password: secret

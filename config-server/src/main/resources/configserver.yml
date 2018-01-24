@@ -1,0 +1,35 @@
+info:
+  component: Config Server
+spring:
+  rabbitmq:
+      host: 127.0.0.1
+      port: 5672
+      username: guest
+      password: guest
+  application:
+    name: configserver
+  jmx:
+    default_domain: localhost
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://kdas1002@codehub.optum.com/cloudlab/config-repo.git
+          repos:
+              multi:
+                patterns: multi-repo-demo-*
+                uri: https://kdas1002@codehub.optum.com/cloudlab/config-repo
+              local:
+                pattern: local*
+                uri: file:///C:/Users/kdas1002/Desktop/codehub/spring-cloud-config
+                
+
+server:
+  port: 8888
+  username: user
+  password: secret
+management:
+  context_path: /admin
+
+
+ 

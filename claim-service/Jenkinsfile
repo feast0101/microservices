@@ -1,0 +1,37 @@
+ using hostname.
+
+[code language="java"]
+node {
+
+    withMaven(maven:'maven') {
+
+        stage('Checkout') {
+            git url: 'https://codehub.optum.com/cloudlab/claimmicroservices.git', credentialsId: 'kdas1002', branch: 'master'
+        }
+
+        stage('Build') {
+            sh 'mvn clean install'
+
+            def pom = readMavenPom file:'pom.xml'
+            print pom.version
+            env.version = pom.version
+        }
+
+        stage('Image') {
+            dir ('claim-service') {
+                def app = docker.build "localhost:5000/claim-service:${env.version}"
+                app.push()
+            }
+        }
+
+        stage ('Run') {
+            docker.image("localhost:5000/claim-service:${env.version}").run('-p 2222:2222 -h claim --name claim --link discovery')
+        }
+
+        stage ('Final') {
+            build job: 'payment-service-pipeline', wait: false
+        }      
+
+    }
+
+}
