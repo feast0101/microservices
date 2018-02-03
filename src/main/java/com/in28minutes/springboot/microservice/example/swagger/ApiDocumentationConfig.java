@@ -1,4 +1,4 @@
-package com.in28minutes.springboot.microservice.example.currencyconversion;
+package com.in28minutes.springboot.microservice.example.swagger;
 
 import io.swagger.annotations.Contact;
 import io.swagger.annotations.ExternalDocs;

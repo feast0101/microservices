@@ -1,4 +1,4 @@
-package com.in28minutes.springboot.microservice.example.currencyconversion;
+package com.in28minutes.springboot.microservice.example.swagger;
 
 import java.util.Arrays;
 import java.util.HashSet;
