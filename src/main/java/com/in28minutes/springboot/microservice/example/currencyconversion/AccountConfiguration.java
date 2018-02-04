@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ComponentScan("com.in28minutes.springboot.microservice.example.currencyconversion")
+@ComponentScan("com.in28minutes.springboot.microservice.example.swagger")
 public class AccountConfiguration {
 
 	@Bean
